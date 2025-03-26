@@ -4,48 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Esfera</title>
-    <!--Para deixar bonitinho-->
+    <!--Para decorar-->
     <style>
+        *{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
             margin: 50px;
-        }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
+            background-color: rgb(199, 231, 202);
         }
         .resultado {
             margin-top: 20px;
             font-size: 18px;
         }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 10px;
+            border-radius: 5%;
+        }
+        button:hover{
+            background-color: rgb(30, 143, 87);
+            color:aliceblue;
+        }
+        h3{
+            color: rgb(30, 143, 87);
+        }
     </style>
 </head>
 <body>
-    <h2>Calculadora de Esfera</h2>
+    <h2>Calcular Esfera</h2>
+    <h3>Digite um número para calcular</h3>
     <input type="number" id="raio">
     <!--Criar um botão que chame a função de calcular-->
-    <button onclick="calcularEsfera()">Calcular</button>
+    <button onclick="calcular()">Calcular</button>
     
     <div class="resultado" id="resultado"></div>
     
     <script>
-        function calcularEsfera() {
+        function calcular() {
             let raio = parseFloat(document.getElementById('raio').value);
             if (isNaN(raio) || raio <= 0) {
                 document.getElementById('resultado').innerHTML = "Por favor, insira um raio válido!";
                 return;
             }
             
+            // Fazer as contas 
             let comprimento = 2 * Math.PI * raio;
             let area = 4 * Math.PI * Math.pow(raio, 2);
             let volume = (4/3) * Math.PI * Math.pow(raio, 3);
             
             document.getElementById('resultado').innerHTML = `
-                <p><strong>Comprimento:</strong> ${comprimento.toFixed(2)}</p>
-                <p><strong>Área:</strong> ${area.toFixed(2)}</p>
-                <p><strong>Volume:</strong> ${volume.toFixed(2)}</p>
+                <p>Comprimento: ${comprimento.toFixed(2)}</p>
+                <p>Área: ${area.toFixed(2)}</p>
+                <p>Volume:${volume.toFixed(2)}</p>
             `;
         }
     </script>
